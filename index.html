@@ -7,6 +7,7 @@
 
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
   <link rel="stylesheet" href="assets/css/styles.css">
+  <script defer type="module" src="assets/js/index.js"></script>
 
   <title>Frontend Mentor | Newsletter sign-up form with success message</title>
 </head>
@@ -29,11 +30,11 @@
         <li class="newsletter__item">Measuring to ensure updates are a success</li>
         <li class="newsletter__item">And much more!</li>
       </ul>
-      <form novalidate class="form">
+      <form novalidate class="form" id="newsletter-form">
         <div class="form__input-container">
           <div class="form__label-container">
             <label for="email" class="form__label">Email address</label>
-            <span class="form__validation" data-state="valid">Valid email required</span>
+            <span class="form__validation" data-state="valid" id="validate-email">Valid email required</span>
           </div>
           <input type="email" name="email" id="email" placeholder="email@company.com" class="form__input"
             data-state="valid" required>
@@ -52,11 +53,11 @@
   <!-- Sign-up form end -->
 
   <!-- Success message start -->
-  <dialog>
+  <dialog id="modal">
     <h2>Thanks for subscribing!</h2>
     <p>A confirmation email has been sent to ash@loremcompany.com. Please open it and click the button inside to confirm
       your subscription.</p>
-    <button>Dismiss message</button>
+    <button type="button" id="close-modal">Dismiss message</button>
   </dialog>
 
 
