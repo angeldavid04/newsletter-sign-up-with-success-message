@@ -34,12 +34,11 @@
         <div class="form__input-container">
           <div class="form__label-container">
             <label for="email" class="form__label">Email address</label>
-            <span class="form__validation" data-state="valid" id="validate-email">Valid email required</span>
+            <span class="form__validation" id="validate-email">Valid email required</span>
           </div>
-          <input type="email" name="email" id="email" placeholder="email@company.com" class="form__input"
-            data-state="valid" required>
+          <input type="email" name="email" id="email" placeholder="email@company.com" class="form__input" required>
         </div>
-        <button type="submit" class="form__input form__submit-btn">Subscribe to monthly newsletter</button>
+        <button type="submit" class="form__input btn">Subscribe to monthly newsletter</button>
       </form>
     </article>
   </main>
@@ -53,11 +52,17 @@
   <!-- Sign-up form end -->
 
   <!-- Success message start -->
-  <dialog id="modal">
-    <h2>Thanks for subscribing!</h2>
-    <p>A confirmation email has been sent to ash@loremcompany.com. Please open it and click the button inside to confirm
-      your subscription.</p>
-    <button type="button" id="close-modal">Dismiss message</button>
+  <dialog id="modal" class="modal">
+    <div class="modal__content">
+      <img src="assets/images/icon-success.svg" alt="Form submitted successfully" class="modal__icon">
+      <h2 class="modal__title">Thanks for subscribing!</h2>
+      <p class="modal__description">A confirmation email has been sent to <strong>ash@loremcompany.com</strong>. Please
+        open it and click
+        the button inside to
+        confirm
+        your subscription.</p>
+    </div>
+    <button type="button" id="close-modal" class="btn modal__button">Dismiss message</button>
   </dialog>
 
 

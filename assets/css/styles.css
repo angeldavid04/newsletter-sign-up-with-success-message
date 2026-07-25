@@ -19,6 +19,7 @@
 :root {
   /* Primary */
   --red: hsl(4, 100%, 67%);
+  --orange: hsl(14deg, 99%, 62%);
   /* Neutral */
   --blue800: hsl(234, 29%, 20%);
   --blue700: hsl(235, 18%, 26%);
@@ -36,7 +37,7 @@
 
 img {
   display: block;
-  width: 100%;
+  max-width: 100%;
   height: auto;
   object-fit: cover;
 }
@@ -78,6 +79,10 @@ main {
   display: grid;
 }
 
+.ilustration {
+  width: 100%;
+}
+
 .newsletter {
   margin-block: 2.25rem;
   margin-inline: 2rem;
@@ -89,6 +94,10 @@ main {
 .newsletter__title {
   font-size: clamp(2.75rem, 0.75rem + 3.5vw, 3.5rem);
   font-weight: 700;
+}
+
+.newsletter__description {
+  line-height: 1.5;
 }
 
 .newsletter__list {
@@ -147,14 +156,16 @@ main {
   color: var(--red);
   font-weight: 700;
   font-size: 0.875rem;
-}
-
-.form__validation[data-state="valid"] {
   visibility: hidden;
+  opacity: 0;
+  transition:
+    opacity 0.3s ease-in,
+    visibility 0.3 ease-in;
 }
 
 .form__validation[data-state="error"] {
   visibility: visible;
+  opacity: 1;
 }
 
 .form__input {
@@ -175,18 +186,77 @@ main {
   color: var(--red);
 }
 
-.form__submit-btn {
-  background-color: var(--blue800);
+.btn {
+  background-color: var(--white);
+  background-image: linear-gradient(
+    to right,
+    var(--blue800) 0%,
+    var(--blue800) 50%,
+    var(--red) 50%,
+    var(--orange) 100%
+  );
+  background-size: 200% 200%;
+  background-position: 0% 0%;
   color: var(--white);
   font-size: 1rem;
   font-weight: 700;
   padding-block: 1.25rem;
+  transition: background-position 0.2s ease-in-out;
   border: none;
-  transition: opacity 0.3s ease-in-out;
+  border-radius: 7px;
 }
 
-.form__submit-btn:hover {
-  opacity: 0.93;
+.btn:hover {
+  background-position: 100% 100%;
+}
+
+.modal {
+  min-width: 100vw;
+  min-height: 100vh;
+  padding-inline: 1.5rem;
+  border: none;
+}
+
+.modal[open] {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  opacity: 1;
+  transform: scale(1);
+}
+
+.modal[open]::backdrop {
+  background-color: var(--blue700);
+}
+
+.modal__content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-block-start: auto;
+  color: var(--blue700);
+}
+
+.modal__title {
+  font-size: clamp(2.75rem, 0.75rem + 3vw, 3rem);
+  font-weight: 700;
+}
+
+.modal__description {
+  line-height: 1.5;
+}
+
+.modal__icon {
+  width: 4rem;
+}
+
+.modal__button {
+  margin-block: 4rem;
+  margin-block-start: auto;
+}
+
+[data-state="on-modal"] {
+  overflow: hidden;
 }
 
 /* ----- MEDIA QUERIES ----- */
@@ -205,6 +275,7 @@ main {
     background-color: var(--white);
     border-radius: 28px;
     min-height: fit-content;
+    margin-block: 2rem;
   }
 
   .newsletter {
@@ -215,6 +286,47 @@ main {
     order: 2;
     padding-block: 1.5rem;
     padding-inline: 1.5rem;
+  }
+
+  @starting-style {
+    .modal[open] {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+  }
+
+  .modal {
+    transition:
+      opacity 0.4s ease,
+      transform 0.4s ease;
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  .modal[open] {
+    min-width: 20rem;
+    min-height: fit-content;
+    padding-inline: 2.75rem;
+    padding-block: 2.75rem;
+    margin-block: auto;
+    margin-inline: auto;
+    max-width: 30rem;
+    display: flex;
+    justify-content: center;
+    border-radius: 28px;
+  }
+
+  .modal__content {
+    margin-block-start: 0;
+    gap: 1.5rem;
+  }
+
+  .modal__icon {
+    margin-block-end: 0.5rem;
+  }
+
+  .modal__button {
+    margin-block: 2rem 0;
   }
 }
 
@@ -230,5 +342,14 @@ main {
 
   .newsletter {
     margin-inline-start: 4rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::after,
+  *::before {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
   }
 }
