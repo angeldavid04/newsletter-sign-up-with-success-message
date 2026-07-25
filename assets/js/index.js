@@ -30,7 +30,7 @@ function validateInput($input, $validate, regex) {
 
 function debounce(func, wait) {
   let timeout;
-  return function (...args) {
+  return (...args) => {
     clearTimeout(timeout);
     timeout = setTimeout(() => {
       func(...args);
