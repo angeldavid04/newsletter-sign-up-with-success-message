@@ -336,6 +336,7 @@ main {
 
   .card {
     max-width: 58rem;
+    min-height: 40rem;
   }
 
   .newsletter {
