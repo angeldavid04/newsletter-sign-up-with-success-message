@@ -267,7 +267,7 @@ main {
   .card {
     max-width: 80%;
     background-color: var(--white);
-    border-radius: 28px;
+    border-radius: 32px;
     min-height: fit-content;
     margin-block: 2rem;
   }
