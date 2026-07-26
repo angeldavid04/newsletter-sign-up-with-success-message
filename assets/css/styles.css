@@ -198,7 +198,8 @@ main {
   border-radius: 7px;
 }
 
-.btn:hover {
+.btn:hover,
+.btn:focus-visible {
   background-position: 100% 100%;
 }
 
