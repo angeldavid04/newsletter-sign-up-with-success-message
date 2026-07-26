@@ -193,7 +193,9 @@ main {
   font-size: 1rem;
   font-weight: 700;
   padding-block: 1.25rem;
-  transition: background-position 0.2s ease-in-out;
+  transition:
+    background-position 0.2s ease-in-out,
+    box-shadow 0.2s ease-in-out;
   border: none;
   border-radius: 7px;
 }
@@ -201,6 +203,8 @@ main {
 .btn:hover,
 .btn:focus-visible {
   background-position: 100% 100%;
+  box-shadow: color-mix(in srgb, var(--red) 65%, transparent) 0px 25px
+    32px -12px;
 }
 
 .modal {
