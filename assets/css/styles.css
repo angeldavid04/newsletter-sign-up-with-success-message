@@ -225,7 +225,7 @@ main {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  margin-block-start: 50%;
+  margin-block: auto 2rem;
   color: var(--blue700);
 }
 
