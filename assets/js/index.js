@@ -6,17 +6,19 @@ function handleForm(e) {
   const isValid = validateInput($emailInput, $emailValidate, regex);
 
   if (isValid) {
+    $showEmail.textContent = $emailInput.value;
     e.target.reset();
     showModal();
   }
 }
 
 function validateInput($input, $validate, regex) {
-  if (!$input || !$validate) return;
+  if (!$input || !$validate || !regex) return;
 
   const email = $input.value;
   const isValid = regex.test(email);
 
+  $input.setAttribute("aria-invalid", String(!isValid));
   if (!isValid) {
     $input.setAttribute("data-state", "error");
     $validate.setAttribute("data-state", "error");
@@ -54,6 +56,7 @@ const $form = document.getElementById("newsletter-form");
 const $emailInput = document.getElementById("email");
 const $emailValidate = document.getElementById("validate-email");
 const $modal = document.getElementById("modal");
+const $showEmail = document.getElementById("show-email");
 const $closeModal = document.getElementById("close-modal");
 
 $form.addEventListener("submit", handleForm);
